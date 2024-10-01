@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    body {
+        background-color: black;
+        margin: 0;
+    }
+
+    form {
+        width: 90%;
+        max-width: 400px;
+        margin: 20px auto;
+        background-color: #FFCCFF;
+        padding: 20px;
+        border-radius: 15px;
+        font-family: 'Calibri', sans-serif;
+        color: dimgray;
+    }
+
+    form legend {
+        font-size: larger;
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+  
+
+    
+    <form method="post" action="imageUploader.php" enctype="multipart/form-data">
+        
+        <legend>Upload Your Image</legend>
+        <p>
+            <label for="inFile">Select a file: </label>
+            <input type="file" name="inFile" id="inFile" accept=".jpg, .gif, .png, .svg">
+        </p>
+        <p>
+            <input type="submit" name="submit" value="Upload File">
+            <input type="reset">
+        </p>
+    </form>
+
+</body>
+</html>
