@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9-1: Input Form Events and INSERT into Database</title>
+    <link rel="stylesheet" href="styles.css">
+   
+
+</head>
+
+<body>
+    <form id="event_form" name="event_form" method="POST" action="insertEvent.php">
+        <legend>Add an Event</legend>
+
+        <p>
+            <label for="events_name">Event Name:</label> 
+            <input type="text" name="events_name" id="events_name" required minlength="3" maxlength="100"/>
+        </p>
+        <p>
+            <label for="events_description">Event Description: </label>
+            <input type="text" name="events_description" id="events_description" required minlength="10" maxlength="255"/>
+        </p>
+        <p>
+            <label for="events_presenter">Presenter: </label>
+            <input type="text" name="events_presenter" id="events_presenter" required minlength="3" maxlength="100"/>
+        </p>
+        <p>
+            <label for="events_date">Date: </label>
+            <input type="date" name="events_date" id="events_date" required/>
+        </p>
+        <p>
+            <label for="events_time">Time: </label>
+            <input type="time" name="events_time" id="events_time" required/>
+        </p>
+        <p>
+            <button type="submit">Submit</button>
+            <input type="reset" name="button2" id="button2" value="Reset" />
+        </p>
+    </form>
+</body>
+</html>

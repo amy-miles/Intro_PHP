@@ -1,0 +1,20 @@
+body {
+    background-color: black;
+    margin: 0;
+}
+
+form {
+    width: 90%;
+    max-width: 400px;
+    margin: 20px auto;
+    background-color: #FFCCFF;
+    padding: 20px;
+    border-radius: 15px;
+    font-family: 'Calibri', sans-serif;
+    color: dimgray;
+}
+
+form legend {
+    font-size: larger;
+    text-align: center;
+}
