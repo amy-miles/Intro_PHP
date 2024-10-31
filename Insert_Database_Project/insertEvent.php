@@ -6,7 +6,7 @@ $events_date = htmlspecialchars(trim($_POST["events_date"]), ENT_QUOTES, 'UTF-8'
 $events_time = htmlspecialchars(trim($_POST["events_time"]), ENT_QUOTES, 'UTF-8'); 
 
 // DB Connection
-require 'db_connect_HL.php';
+require 'db_connect.php';
 
 // SQL insert statement
 $sql = "INSERT INTO wdv341_events (events_name, events_description, events_presenter, events_date, events_time, events_date_inserted, events_date_updated)
@@ -42,7 +42,7 @@ if ($stmt->execute()) {
         <legend>Submission Result</legend>
         <p><?php echo $message; ?></p>  
         <p>
-            <a href="https://amymiles.info/wdv341/Insert_Database_Project/inputForm.html">Add Another Event</a>
+            <a href="eventInputForm.html">Add Another Event</a>
         </p>
     </form>
 </body>

@@ -13,28 +13,30 @@
 //PDO PHP Data Objects database access and built in statements for interaction
 //separates the database from the application data abstract layer
 
+try {
+    require 'db_connect.php'; //access to the database
 
-require 'db_connect.php'; //access to the database
+    $sql = "SELECT events_name, events_description FROM wdv341_events";
 
-$sql = "SELECT events_name, events_description FROM wdv341_events";
+    //prepared statements allow protection from SQL injection attacks
+    //prepare and bind
+    //i - integer
+    // d - double
+    // s - string
+    // b - BLOB (binary large object like images, audio files, videos)
+    // We must have one of these for each parameter.
+    // By telling mysql what type of data to expect, we minimize the risk of SQL injections.
 
-//prepared statements allow protection from SQL injection attacks
-//prepare and bind
-//i - integer
-// d - double
-// s - string
-// b - BLOB (binary large object like images, audio files, videos)
-// We must have one of these for each parameter.
-// By telling mysql what type of data to expect, we minimize the risk of SQL injections.
+    $stmt = $conn->prepare($sql);
 
-$stmt = $conn->prepare($sql);
+    //bind parameters
 
-//bind parameters
+    $stmt->execute(); //Exacute the PDO Prepared stamt, save results in $stmt object
 
-$stmt->execute(); //Exacute the PDO Prepared stamt, save results in $stmt object
-
-$stmt->setFetchMode(PDO::FETCH_ASSOC); //return values as an ASSOC array
-
+    $stmt->setFetchMode(PDO::FETCH_ASSOC); //return values as an ASSOC array
+} catch (PDOException $e) {
+    echo "Database Failed " . $e->getMessage();
+}
 //$user = $stmt->fetch();
 
 // Example of Fetch All
@@ -79,17 +81,17 @@ $stmt->setFetchMode(PDO::FETCH_ASSOC); //return values as an ASSOC array
     <h3>Assignment 7-1</h3>
 
     <?php
-        //htmlspecialchars converts special characters in a string to their corresponding HTML entities.
-        //It prevents cross-site scripting(XSS) which ensures chars like <> aren't interpreted as HTML or JavaScript
-        //put the loop that processes the database result and outputs the content as an HTML table
-        echo "<table border='1'>";
-        echo "<tr><th>Name</th><th>Description</th></tr>";
-        while($eventRow = $stmt->fetch()){
-            echo '<tr>';
-            echo "<td>" . htmlspecialchars($eventRow["events_name"]) . "</td>";
-            echo "<td>" . htmlspecialchars($eventRow["events_description"]) . "</td>"; 
-            echo "</tr>";        
-        }
+    //htmlspecialchars converts special characters in a string to their corresponding HTML entities.
+    //It prevents cross-site scripting(XSS) which ensures chars like <> aren't interpreted as HTML or JavaScript
+    //put the loop that processes the database result and outputs the content as an HTML table
+    echo "<table border='1'>";
+    echo "<tr><th>Name</th><th>Description</th></tr>";
+    while ($eventRow = $stmt->fetch()) {
+        echo '<tr>';
+        echo "<td>" . htmlspecialchars($eventRow["events_name"]) . "</td>";
+        echo "<td>" . htmlspecialchars($eventRow["events_description"]) . "</td>";
+        echo "</tr>";
+    }
     ?>
 
 </body>
